@@ -13,7 +13,7 @@ class Owner
   end
   
   def self.cats
-    @cats
+    @@
   end
   
   def dogs
