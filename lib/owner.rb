@@ -50,9 +50,8 @@ end
   end
 
   def buy_dog(name)
-    name = Dog.new(name)
-    @pets[:dogs] << name 
-  end 
+    Dog.new(name, self)
+  end
 
   def walk_dogs
     @pets[:dogs].each do |dog|
