@@ -19,8 +19,10 @@ class Owner
 end
   
   def dogs
-    @dogs
+    Dog.all.select do |dog|
+    dog.owner == self
   end
+end
   
   def say_species
       "I am a #{@species}."
