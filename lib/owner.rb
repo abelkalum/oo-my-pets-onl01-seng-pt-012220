@@ -61,12 +61,16 @@ end
     self.cats.each {|cat| cat.mood = "happy"}
   end
 
- def sell_pets
-    self.pets.each do |pet|
-      self.pets.delete(pet)
-      pet.owner = nil
-      pet.mood = "nervous"
-    end
+ def sell_pets	
+        all_pets = self.cats + self.dogs	
+        all_pets.each do |pet|	
+            sell_pet(pet)	
+        end	
+    end	
+
+    def sell_pet(pet)	
+        pet.owner = nil	
+        pet.mood = "nervous"	
   end
   
   def list_pets
