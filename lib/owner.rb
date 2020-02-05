@@ -73,7 +73,8 @@ end
         pet.mood = "nervous"	
   end
   
-  def list_pets
-    "I have #{@pets[:dogs].length} dog(s), and #{@pets[:cats].length} cat(s)."
-  end
-end
+  def list_pets	
+        number_of_dogs = self.dogs.count	
+        number_of_cats = self.cats.count	
+        return "I have #{number_of_dogs} dog(s), and #{number_of_cats} cat(s)."	
+    end
