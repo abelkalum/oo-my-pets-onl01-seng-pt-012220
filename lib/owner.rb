@@ -14,7 +14,7 @@ class Owner
   end
   
   def cats
-    
+    @pets[:cats] << name 
     @@all.cats.count
   end
   
