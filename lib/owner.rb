@@ -12,7 +12,7 @@ class Owner
     
   end
   
-  def cats
+  def self.cats
     @cats
   end
   
