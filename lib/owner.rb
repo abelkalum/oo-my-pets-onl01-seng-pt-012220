@@ -14,7 +14,7 @@ class Owner
   end
   
   def cats
-    @cats
+    @@all.cats.count
   end
   
   def dogs
