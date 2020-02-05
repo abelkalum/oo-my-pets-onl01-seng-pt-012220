@@ -14,6 +14,7 @@ class Owner
   end
   
   def cats
+    
     @@all.cats.count
   end
   
