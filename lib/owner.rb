@@ -78,3 +78,4 @@ end
         number_of_cats = self.cats.count	
         return "I have #{number_of_dogs} dog(s), and #{number_of_cats} cat(s)."	
     end
+  end
