@@ -1,76 +1,78 @@
 class Owner
   @@all= []
-  attr_accessor :name, :pets
-  attr_reader :species
+  attr_accessor :pets, :cats, :dogs
+  attr_reader :name, :species
 
-  # Instance Methods #
-
-  def initialize(species)
+  def initialize(species="human", name)
     @species = species
+    @name = name
     @@all << self
-    @pets = {:dogs => [], :cats => []}
+    @cats = []
+    @dogs = []
+    
   end
-
+  
+  def cats
+    @cats
+  end
+  
+  def dogs
+    @dogs
+  end
+  
   def say_species
-    return "I am a #{@species}."
+      "I am a #{@species}."
   end
-
-  # Pets #
-
-  def buy_dog(name_of_dog)
-    @pets[:dogs] << Dog.new(name_of_dog)
+  
+  def self.all
+      @@all
   end
-
-  def buy_cat(name_of_cat)
-    @pets[:cats] << Cat.new(name_of_cat)
+  
+  def save
+    @@all << self
   end
+  
+  def self.count
+      @@all.count
+  end
+  
+  def self.reset_all
+      @@all.clear
+      @@all
+  end
+  
+  def buy_cat(name)
+    name = Cat.new(name)
+    @pets[:cats] << name 
+  end 
+
+  def buy_dog(name)
+    name = Dog.new(name)
+    @pets[:dogs] << name 
+  end 
 
   def walk_dogs
-    @pets.collect do |species, instances|
-      if species == :dogs
-        instances.each do |dog|
-          dog.mood = "happy"
-        end
-      end
+    @pets[:dogs].each do |dog|
+      dog.mood = "happy"
     end
   end
 
   def feed_cats
-    @pets.collect do |species, instances|
-      if species == :cats
-        instances.each do |cat|
-          cat.mood = "happy"
-        end
-      end
+    @pets[:cats].each do |cat|
+      cat.mood = "happy"
     end
   end
 
   def sell_pets
-    @pets.collect do |species, instances|
-      instances.each do |pet|
+    @pets.each do |type, name_array|
+      name_array.each do |pet|
         pet.mood = "nervous"
-      end
-      instances.clear
+      end 
     end
+    @pets = {}
   end
 
   def list_pets
-    num_dogs = @pets[:dogs].size
-    num_cats = @pets[:cats].size
-    return "I have #{num_dogs} dog(s), and #{num_cats} cat(s)."
-  end
-
-  # Class Methods #
-
-  def self.all
-    @@all
-  end
-
-  def self.reset_all
-    @@all.clear
-  end
-
-  def self.count
-    @@all.size
+    "I have #{@pets[:dogs].length} dog(s), and #{@pets[:cats].length} cat(s)."
   end
 end
