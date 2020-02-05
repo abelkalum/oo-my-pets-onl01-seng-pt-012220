@@ -62,13 +62,11 @@ end
   end
 
   def sell_pets
-    @pets.each do |type, name_array|
-      name_array.each do |pet|
-        pet.mood = "nervous"
-      end 
+    self.cats.each do |cat|
+      self.cats.delete(cat)
+      cat.owner = nil
+      cat.mood = "nervous"
     end
-    @pets = {}
-  end
 
   def list_pets
     "I have #{@pets[:dogs].length} dog(s), and #{@pets[:cats].length} cat(s)."
