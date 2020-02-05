@@ -58,9 +58,7 @@ end
   end
 
   def feed_cats
-    @pets[:cats].each do |cat|
-      cat.mood = "happy"
-    end
+    self.cats.each {|cat| cat.mood = "happy"}
   end
 
   def sell_pets
